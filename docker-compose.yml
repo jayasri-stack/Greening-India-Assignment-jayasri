@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: taskflow-postgres
+    environment:
+      POSTGRES_DB: ${DB_NAME:-taskflow_db}
+      POSTGRES_USER: ${DB_USER:-taskflow_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-taskflow_password}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./migrations:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-taskflow_user}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - taskflow-network
+
+  # TaskFlow Backend API
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: taskflow-api
+    environment:
+      DATABASE_URL: postgresql://${DB_USER:-taskflow_user}:${DB_PASSWORD:-taskflow_password}@postgres:5432/${DB_NAME:-taskflow_db}?sslmode=disable
+      JWT_SECRET: ${JWT_SECRET:-your_super_secret_jwt_key_change_this_in_production_minimum_32_chars}
+      PORT: ${PORT:-8080}
+      ENV: ${ENV:-production}
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - taskflow-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+networks:
+  taskflow-network:
+    driver: bridge

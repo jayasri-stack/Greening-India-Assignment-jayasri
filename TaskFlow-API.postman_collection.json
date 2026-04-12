@@ -1,0 +1,305 @@
+{
+  "info": {
+    "_postman_id": "taskflow-backend-api",
+    "name": "TaskFlow Backend API",
+    "description": "Complete API collection for TaskFlow backend testing",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"New User\",\n  \"email\": \"newuser@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/auth/register",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["auth", "register"]
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/auth/login",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["auth", "login"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Projects",
+      "item": [
+        {
+          "name": "List Projects",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/projects",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["projects"]
+            }
+          }
+        },
+        {
+          "name": "Create Project",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"New Project\",\n  \"description\": \"Project description\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/projects",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["projects"]
+            }
+          }
+        },
+        {
+          "name": "Get Project",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/projects/550e8400-e29b-41d4-a716-446655440002",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["projects", "550e8400-e29b-41d4-a716-446655440002"]
+            }
+          }
+        },
+        {
+          "name": "Update Project",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Project Name\",\n  \"description\": \"Updated description\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/projects/550e8400-e29b-41d4-a716-446655440002",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["projects", "550e8400-e29b-41d4-a716-446655440002"]
+            }
+          }
+        },
+        {
+          "name": "Delete Project",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/projects/550e8400-e29b-41d4-a716-446655440002",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["projects", "550e8400-e29b-41d4-a716-446655440002"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tasks",
+      "item": [
+        {
+          "name": "List Tasks",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/projects/550e8400-e29b-41d4-a716-446655440002/tasks",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["projects", "550e8400-e29b-41d4-a716-446655440002", "tasks"]
+            }
+          }
+        },
+        {
+          "name": "List Tasks - Filter by Status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/projects/550e8400-e29b-41d4-a716-446655440002/tasks?status=todo",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["projects", "550e8400-e29b-41d4-a716-446655440002", "tasks"],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "todo"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Task",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"New Task\",\n  \"description\": \"Task description\",\n  \"priority\": \"high\",\n  \"due_date\": \"2026-04-20\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/projects/550e8400-e29b-41d4-a716-446655440002/tasks",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["projects", "550e8400-e29b-41d4-a716-446655440002", "tasks"]
+            }
+          }
+        },
+        {
+          "name": "Update Task",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"in_progress\",\n  \"priority\": \"medium\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/tasks/550e8400-e29b-41d4-a716-446655440003",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["tasks", "550e8400-e29b-41d4-a716-446655440003"]
+            }
+          }
+        },
+        {
+          "name": "Delete Task",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/tasks/550e8400-e29b-41d4-a716-446655440003",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["tasks", "550e8400-e29b-41d4-a716-446655440003"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "token",
+      "value": "your_jwt_token_here"
+    }
+  ]
+}
