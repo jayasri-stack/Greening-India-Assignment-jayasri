@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"log/slog"
 
-	"jayasri-stack/Greening-India-Assignment-jayasri/internal/models"
-	"jayasri-stack/Greening-India-Assignment-jayasri/internal/repository"
+	"github.com/jayasri-stack/Greening-India-Assignment-jayasri/internal/models"
+	"github.com/jayasri-stack/Greening-India-Assignment-jayasri/internal/repository"
 )
 
 // ProjectService handles project business logic

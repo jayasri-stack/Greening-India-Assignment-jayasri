@@ -12,12 +12,12 @@ import (
 	"syscall"
 	"time"
 
-	"jayasri-stack/Greening-India-Assignment-jayasri/internal/auth"
-	"jayasri-stack/Greening-India-Assignment-jayasri/internal/db"
-	"jayasri-stack/Greening-India-Assignment-jayasri/internal/handlers"
-	"jayasri-stack/Greening-India-Assignment-jayasri/internal/middleware"
-	"jayasri-stack/Greening-India-Assignment-jayasri/internal/repository"
-	"jayasri-stack/Greening-India-Assignment-jayasri/internal/service"
+	"github.com/jayasri-stack/Greening-India-Assignment-jayasri/internal/auth"
+	"github.com/jayasri-stack/Greening-India-Assignment-jayasri/internal/db"
+	"github.com/jayasri-stack/Greening-India-Assignment-jayasri/internal/handlers"
+	"github.com/jayasri-stack/Greening-India-Assignment-jayasri/internal/middleware"
+	"github.com/jayasri-stack/Greening-India-Assignment-jayasri/internal/repository"
+	"github.com/jayasri-stack/Greening-India-Assignment-jayasri/internal/service"
 )
 
 type routeParamsKey struct{}

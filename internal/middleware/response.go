@@ -5,7 +5,7 @@ import (
 	"log/slog"
 	"net/http"
 
-	"jayasri-stack/Greening-India-Assignment-jayasri/internal/models"
+	"github.com/jayasri-stack/Greening-India-Assignment-jayasri/internal/models"
 )
 
 // ErrorHandler wraps handlers to catch and handle errors gracefully

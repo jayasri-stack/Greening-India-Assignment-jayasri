@@ -6,9 +6,9 @@ import (
 	"log/slog"
 	"net/http"
 
-	"jayasri-stack/Greening-India-Assignment-jayasri/internal/middleware"
-	"jayasri-stack/Greening-India-Assignment-jayasri/internal/models"
-	"jayasri-stack/Greening-India-Assignment-jayasri/internal/service"
+	"github.com/jayasri-stack/Greening-India-Assignment-jayasri/internal/middleware"
+	"github.com/jayasri-stack/Greening-India-Assignment-jayasri/internal/models"
+	"github.com/jayasri-stack/Greening-India-Assignment-jayasri/internal/service"
 )
 
 // ProjectHandler handles project endpoints

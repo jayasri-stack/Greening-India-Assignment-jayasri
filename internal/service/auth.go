@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"log/slog"
 
-	"jayasri-stack/Greening-India-Assignment-jayasri/internal/auth"
-	"jayasri-stack/Greening-India-Assignment-jayasri/internal/models"
-	"jayasri-stack/Greening-India-Assignment-jayasri/internal/repository"
+	"github.com/jayasri-stack/Greening-India-Assignment-jayasri/internal/auth"
+	"github.com/jayasri-stack/Greening-India-Assignment-jayasri/internal/models"
+	"github.com/jayasri-stack/Greening-India-Assignment-jayasri/internal/repository"
 )
 
 // AuthService handles authentication business logic (Dependency Injection)

@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"jayasri-stack/Greening-India-Assignment-jayasri/internal/models"
-	"jayasri-stack/Greening-India-Assignment-jayasri/internal/repository"
+	"github.com/jayasri-stack/Greening-India-Assignment-jayasri/internal/models"
+	"github.com/jayasri-stack/Greening-India-Assignment-jayasri/internal/repository"
 )
 
 // TaskService handles task business logic

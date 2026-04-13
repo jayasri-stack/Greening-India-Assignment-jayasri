@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"jayasri-stack/Greening-India-Assignment-jayasri/internal/db"
+	"github.com/jayasri-stack/Greening-India-Assignment-jayasri/internal/db"
 )
 
 // runMigrations executes all pending migrations

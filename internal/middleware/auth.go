@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"strings"
 
-	"jayasri-stack/Greening-India-Assignment-jayasri/internal/auth"
-	"jayasri-stack/Greening-India-Assignment-jayasri/internal/models"
+	"github.com/jayasri-stack/Greening-India-Assignment-jayasri/internal/auth"
+	"github.com/jayasri-stack/Greening-India-Assignment-jayasri/internal/models"
 )
 
 // ContextKey defines the type for context keys

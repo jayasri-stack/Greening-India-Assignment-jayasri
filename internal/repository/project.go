@@ -9,8 +9,8 @@ import (
 	"sync"
 
 	"github.com/google/uuid"
-	"jayasri-stack/Greening-India-Assignment-jayasri/internal/db"
-	"jayasri-stack/Greening-India-Assignment-jayasri/internal/models"
+	"github.com/jayasri-stack/Greening-India-Assignment-jayasri/internal/db"
+	"github.com/jayasri-stack/Greening-India-Assignment-jayasri/internal/models"
 )
 
 // ProjectRepository handles project data operations
