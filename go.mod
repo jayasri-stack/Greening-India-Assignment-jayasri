@@ -1,4 +1,4 @@
-module github.com/yourname/taskflow-backend
+module github.com/jayasri-stack/Greening-India-Assignment-jayasri
 
 go 1.21
 

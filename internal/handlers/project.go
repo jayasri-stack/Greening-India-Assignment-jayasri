@@ -6,9 +6,9 @@ import (
 	"log/slog"
 	"net/http"
 
-	"github.com/yourname/taskflow-backend/internal/middleware"
-	"github.com/yourname/taskflow-backend/internal/models"
-	"github.com/yourname/taskflow-backend/internal/service"
+	"jayasri-stack/Greening-India-Assignment-jayasri/internal/middleware"
+	"jayasri-stack/Greening-India-Assignment-jayasri/internal/models"
+	"jayasri-stack/Greening-India-Assignment-jayasri/internal/service"
 )
 
 // ProjectHandler handles project endpoints

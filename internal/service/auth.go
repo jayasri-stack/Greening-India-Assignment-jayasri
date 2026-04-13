@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"log/slog"
 
-	"github.com/yourname/taskflow-backend/internal/auth"
-	"github.com/yourname/taskflow-backend/internal/models"
-	"github.com/yourname/taskflow-backend/internal/repository"
+	"jayasri-stack/Greening-India-Assignment-jayasri/internal/auth"
+	"jayasri-stack/Greening-India-Assignment-jayasri/internal/models"
+	"jayasri-stack/Greening-India-Assignment-jayasri/internal/repository"
 )
 
 // AuthService handles authentication business logic (Dependency Injection)

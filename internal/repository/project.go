@@ -9,8 +9,8 @@ import (
 	"sync"
 
 	"github.com/google/uuid"
-	"github.com/yourname/taskflow-backend/internal/db"
-	"github.com/yourname/taskflow-backend/internal/models"
+	"jayasri-stack/Greening-India-Assignment-jayasri/internal/db"
+	"jayasri-stack/Greening-India-Assignment-jayasri/internal/models"
 )
 
 // ProjectRepository handles project data operations

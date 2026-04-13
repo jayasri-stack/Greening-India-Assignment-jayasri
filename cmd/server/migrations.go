@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/yourname/taskflow-backend/internal/db"
+	"jayasri-stack/Greening-India-Assignment-jayasri/internal/db"
 )
 
 // runMigrations executes all pending migrations

@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/yourname/taskflow-backend/internal/auth"
-	"github.com/yourname/taskflow-backend/internal/models"
+	"jayasri-stack/Greening-India-Assignment-jayasri/internal/auth"
+	"jayasri-stack/Greening-India-Assignment-jayasri/internal/models"
 )
 
 // ContextKey defines the type for context keys

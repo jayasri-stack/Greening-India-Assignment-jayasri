@@ -10,13 +10,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yourname/taskflow-backend/internal/auth"
-	"github.com/yourname/taskflow-backend/internal/db"
-	"github.com/yourname/taskflow-backend/internal/handlers"
-	"github.com/yourname/taskflow-backend/internal/middleware"
-	"github.com/yourname/taskflow-backend/internal/models"
-	"github.com/yourname/taskflow-backend/internal/repository"
-	"github.com/yourname/taskflow-backend/internal/service"
+	"jayasri-stack/Greening-India-Assignment-jayasri/internal/auth"
+	"jayasri-stack/Greening-India-Assignment-jayasri/internal/db"
+	"jayasri-stack/Greening-India-Assignment-jayasri/internal/handlers"
+	"jayasri-stack/Greening-India-Assignment-jayasri/internal/middleware"
+	"jayasri-stack/Greening-India-Assignment-jayasri/internal/models"
+	"jayasri-stack/Greening-India-Assignment-jayasri/internal/repository"
+	"jayasri-stack/Greening-India-Assignment-jayasri/internal/service"
 )
 
 // TestServer holds test server components

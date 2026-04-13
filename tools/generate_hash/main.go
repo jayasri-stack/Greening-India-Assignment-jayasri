@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/yourname/taskflow-backend/internal/auth"
+	"github.com/jayasri-stack/Greening-India-Assignment-jayasri/internal/auth"
 	"golang.org/x/crypto/bcrypt"
 )
 

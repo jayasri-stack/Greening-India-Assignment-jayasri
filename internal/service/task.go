@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/yourname/taskflow-backend/internal/models"
-	"github.com/yourname/taskflow-backend/internal/repository"
+	"jayasri-stack/Greening-India-Assignment-jayasri/internal/models"
+	"jayasri-stack/Greening-India-Assignment-jayasri/internal/repository"
 )
 
 // TaskService handles task business logic
