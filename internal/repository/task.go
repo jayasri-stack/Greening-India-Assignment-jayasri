@@ -9,8 +9,8 @@ import (
 	"sync"
 
 	"github.com/google/uuid"
-	"github.com/yourname/taskflow-backend/internal/db"
-	"github.com/yourname/taskflow-backend/internal/models"
+	"github.com/jayasri-stack/Greening-India-Assignment-jayasri/internal/db"
+	"github.com/jayasri-stack/Greening-India-Assignment-jayasri/internal/models"
 )
 
 // TaskRepository handles task data operations

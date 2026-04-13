@@ -73,7 +73,7 @@
 Now users can run your entire project with:
 
 ```bash
-git clone https://github.com/yourname/taskflow-backend
+git clone https://github.com/jayasri-stack/Greening-India-Assignment-jayasri
 cd taskflow-backend
 cp .env.example .env
 docker compose up

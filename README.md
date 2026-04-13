@@ -67,7 +67,7 @@ database (Connection pooling, transactions)
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/yourname/taskflow-backend
+git clone https://github.com/jayasri-stack/Greening-India-Assignment-jayasri
 cd taskflow-backend
 
 # 2. Copy environment variables
@@ -543,7 +543,7 @@ The easiest way to run the entire stack:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/yourname/taskflow-backend
+git clone https://github.com/jayasri-stack/Greening-India-Assignment-jayasri
 cd taskflow-backend
 
 # 2. Copy environment variables (optional - docker-compose has defaults)

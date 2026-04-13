@@ -275,7 +275,7 @@ volumes:
 
 #### `go.mod`
 ```
-module github.com/yourname/taskflow-backend
+module github.com/jayasri-stack/Greening-India-Assignment-jayasri
 
 require:
   - github.com/golang-jwt/jwt/v5
