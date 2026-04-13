@@ -115,13 +115,13 @@ func main() {
 		slog.Error("failed to initialize database", "error", err)
 		os.Exit(1)
 	}
-	defer database.Close()
+	// defer database.Close()
 
-	// Run migrations automatically on startup
-	if err := runMigrations(database); err != nil {
-		slog.Error("failed to run migrations", "error", err)
-		os.Exit(1)
-	}
+	 // Run migrations automatically on startup
+	// if err := runMigrations(database); err != nil {
+	 // 	slog.Error("failed to run migrations", "error", err)
+	 // 	os.Exit(1)
+	// }
 
 	// Initialize repositories
 	userRepo := repository.NewUserRepository(database)
@@ -228,6 +228,7 @@ func main() {
 	<-done
 	slog.Info("server stopped")
 }
+
 
 // maskDSN masks the password in the DSN for logging
 func maskDSN(dsn string) string {

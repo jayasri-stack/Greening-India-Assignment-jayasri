@@ -1,4 +1,4 @@
-module github.com/github.com/jayasri-stack/Greening-India-Assignment-jayasri
+module github.com/jayasri-stack/Greening-India-Assignment-jayasri
 
 go 1.21
 

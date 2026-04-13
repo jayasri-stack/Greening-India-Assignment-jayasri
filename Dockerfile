@@ -26,7 +26,7 @@ FROM alpine:latest
 WORKDIR /app
 
 # Install runtime dependencies
-RUN apk --no-cache add ca-certificates postgresql-client
+RUN apk --no-cache add ca-certificates postgresql-client wget
 
 # Copy migrations from builder
 COPY --from=builder /app/migrations ./migrations
