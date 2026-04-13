@@ -136,7 +136,7 @@ Email:    test@example.com
 Password: password123
 ```
 
-**Note**: The password hash in the seed is a placeholder. To generate a proper bcrypt hash:
+
 
 ```go
 package main
@@ -585,14 +585,16 @@ psql -U taskflow_user -d taskflow_db -f migrations/001_init_schema.up.sql
 
 ## Test Credentials
 
-After running migrations, use these credentials to test:
+Test Credentials
 
-```
-Email:    test@example.com
-Password: test_password123
-```
+After running:
 
-These are seeded automatically by the migrations. You can also register new users via the `/auth/register` endpoint.
+docker compose up
+
+Use these credentials to log in immediately:
+
+Email: test@example.com
+Password: password123
 
 ## API Reference
 
