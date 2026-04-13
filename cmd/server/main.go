@@ -50,7 +50,12 @@ func compileRoutePattern(pattern string) (*regexp.Regexp, []string) {
 
 func (r *Router) Handle(method, pattern string, handler http.Handler) {
 	regex, paramNames := compileRoutePattern(pattern)
-	r.routes = append(r.routes, routeEntry{method: method, pattern: regex, paramNames: paramNames, handler: handler})
+	r.routes = append(r.routes, routeEntry{
+		method:     method,
+		pattern:    regex,
+		paramNames: paramNames,
+		handler:    handler,
+	})
 }
 
 func (r *Router) ServeHTTP(w http.ResponseWriter, req *http.Request) {
@@ -86,11 +91,9 @@ func pathValue(r *http.Request, name string) string {
 }
 
 func main() {
-	// Setup logging
 	logger := slog.New(slog.NewJSONHandler(os.Stdout, nil))
 	slog.SetDefault(logger)
 
-	// Load configuration from environment
 	dsn := os.Getenv("DATABASE_URL")
 	if dsn == "" {
 		slog.Error("DATABASE_URL environment variable not set")
@@ -108,7 +111,6 @@ func main() {
 		port = "8080"
 	}
 
-	// Initialize database
 	slog.Info("connecting to database", "dsn", maskDSN(dsn))
 	database, err := db.New(dsn)
 	if err != nil {
@@ -123,30 +125,31 @@ func main() {
 	// 	os.Exit(1)
 	// }
 
-	// Initialize repositories
 	userRepo := repository.NewUserRepository(database)
 	projectRepo := repository.NewProjectRepository(database)
 	taskRepo := repository.NewTaskRepository(database)
 
-	// Initialize auth manager
 	authMgr := auth.NewManager(jwtSecret, 24*time.Hour)
 
-	// Initialize services
 	authService := service.NewAuthService(userRepo, authMgr)
 	projectService := service.NewProjectService(projectRepo, taskRepo)
 	taskService := service.NewTaskService(taskRepo, projectRepo)
 
-	// Initialize handlers
 	authHandler := handlers.NewAuthHandler(authService)
 	projectHandler := handlers.NewProjectHandler(projectService)
 	taskHandler := handlers.NewTaskHandler(taskService)
 
-	// Setup router
 	router := NewRouter()
 
-	// Auth endpoints (no authentication required)
+	// Public endpoints
 	router.Handle("POST", "/auth/register", http.HandlerFunc(authHandler.Register))
 	router.Handle("POST", "/auth/login", http.HandlerFunc(authHandler.Login))
+
+	// Root endpoint
+	router.Handle("GET", "/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("TaskFlow API is running"))
+	}))
 
 	// Health endpoint
 	router.Handle("GET", "/health", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -154,10 +157,9 @@ func main() {
 		w.Write([]byte("OK"))
 	}))
 
-	// Protected routes with auth middleware
 	authMiddleware := middleware.AuthMiddleware(authMgr)
 
-	// Projects endpoints
+	// Project endpoints
 	router.Handle("GET", "/projects", authMiddleware(http.HandlerFunc(projectHandler.ListProjects)))
 	router.Handle("POST", "/projects", authMiddleware(http.HandlerFunc(projectHandler.CreateProject)))
 	router.Handle("GET", "/projects/{id}", authMiddleware(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -173,7 +175,7 @@ func main() {
 		projectHandler.DeleteProject(w, r, projectID)
 	})))
 
-	// Tasks endpoints
+	// Task endpoints
 	router.Handle("GET", "/projects/{id}/tasks", authMiddleware(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		projectID := pathValue(r, "id")
 		taskHandler.ListTasks(w, r, projectID)
@@ -191,12 +193,10 @@ func main() {
 		taskHandler.DeleteTask(w, r, taskID)
 	})))
 
-	// Add middleware stack
 	var handler http.Handler = router
 	handler = middleware.LoggingMiddleware()(handler)
 	handler = middleware.CORSMiddleware()(handler)
 
-	// Create HTTP server with graceful shutdown support
 	server := &http.Server{
 		Addr:         ":" + port,
 		Handler:      handler,
@@ -205,7 +205,6 @@ func main() {
 		IdleTimeout:  60 * time.Second,
 	}
 
-	// Channel to listen for interrupt signals
 	done := make(chan bool, 1)
 	go func() {
 		sigChan := make(chan os.Signal, 1)
@@ -224,7 +223,6 @@ func main() {
 		done <- true
 	}()
 
-	// Start server
 	slog.Info("starting server", "port", port)
 	if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 		slog.Error("server error", "error", err)
@@ -235,7 +233,6 @@ func main() {
 	slog.Info("server stopped")
 }
 
-// maskDSN masks the password in the DSN for logging
 func maskDSN(dsn string) string {
 	parts := strings.Split(dsn, "@")
 	if len(parts) == 2 {
