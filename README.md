@@ -347,48 +347,9 @@ Common Status Codes
 403 - Forbidden
 404 - Not found
 500 - Internal server error
-Security Considerations
-Passwords hashed with bcrypt
-JWT authentication used for protected routes
-Parameterized SQL queries help prevent SQL injection
-Structured error responses avoid leaking sensitive internals
-CORS support configured through middleware
-Concurrency Notes
-Go handles HTTP requests concurrently
-PostgreSQL connection pooling is used
-Repository layer is designed to be concurrency-safe
-Graceful shutdown support can be added for cleaner deployments
-What I Would Add With More Time
-Integration tests
-Pagination for list endpoints
-Request validation middleware
-Health check endpoint
-Metrics and tracing
-Rate limiting
-Role-based access control
-Redis caching
-CI/CD pipeline
-OpenAPI / Swagger docs
-Troubleshooting
-Docker does not start
-Make sure Docker Desktop is running
-Make sure WSL2 is enabled on Windows
-Check whether ports 5432 and 8080 are already in use
-Database connection issues
-Verify PostgreSQL is running
-Check .env values
-Confirm database and user exist
-Migration issues
-Check user permissions in PostgreSQL
-Confirm migration files exist in the migrations/ folder
-API not reachable
-Confirm the app is listening on port 8080
-Check container logs:
-docker compose logs
+
 
 Built with Go, PostgreSQL, and clean backend design principles.
 
 
-Use this as your new `README.md`.
 
-One important correction: if your project root is actually `taskflow-backend/` inside the repo, then only the folder name in the structure and `cd` commands should be changed. The uploaded README had inconsistent path references, which is why I normalized it here. :contentReference[oaicite:1]{index=1}
