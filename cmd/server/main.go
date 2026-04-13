@@ -117,10 +117,10 @@ func main() {
 	}
 	// defer database.Close()
 
-	 // Run migrations automatically on startup
+	// Run migrations automatically on startup
 	// if err := runMigrations(database); err != nil {
-	 // 	slog.Error("failed to run migrations", "error", err)
-	 // 	os.Exit(1)
+	// 	slog.Error("failed to run migrations", "error", err)
+	// 	os.Exit(1)
 	// }
 
 	// Initialize repositories
@@ -147,6 +147,12 @@ func main() {
 	// Auth endpoints (no authentication required)
 	router.Handle("POST", "/auth/register", http.HandlerFunc(authHandler.Register))
 	router.Handle("POST", "/auth/login", http.HandlerFunc(authHandler.Login))
+
+	// Health endpoint
+	router.Handle("GET", "/health", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("OK"))
+	}))
 
 	// Protected routes with auth middleware
 	authMiddleware := middleware.AuthMiddleware(authMgr)
@@ -229,10 +235,8 @@ func main() {
 	slog.Info("server stopped")
 }
 
-
 // maskDSN masks the password in the DSN for logging
 func maskDSN(dsn string) string {
-	// Find password pattern and mask it
 	parts := strings.Split(dsn, "@")
 	if len(parts) == 2 {
 		userPart := strings.Split(parts[0], "://")[1]
